@@ -1,0 +1,1 @@
+fun xs -> List.map (+) xs
