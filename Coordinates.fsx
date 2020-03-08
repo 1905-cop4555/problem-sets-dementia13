@@ -7,4 +7,8 @@ let Tuple = (4 , 20) // :)
 let Threeple = (3.2, 151.0, 97.8)
 let Fourple = ("Farcical aquatic ceremony", "Judean People's Front", "Scott of the Antarctic", "Grale frit")
 
-
+let functiondelic munch Coordinates = 
+    match Coordinates with
+    | Tuple(x, y) -> munch x y
+    | Threeple(x, y, z) -> munch x (munch y z)
+    | Fourple(w, x, y, z) -> munch w (munch x (munch y z))
