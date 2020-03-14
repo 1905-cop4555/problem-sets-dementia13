@@ -1,19 +1,22 @@
-open System.Runtime.Remoting.Metadata.W3cXsd2001
+//open System.Runtime.Remoting.Metadata.W3cXsd2001
 
 let list1 = [1; 2; 3]
 let list2 = [4; 5; 6]
-let list3 = [list1; list2]
+//let list3 = [list1; list2]
 
-let rec transpose = function        // Creates a single list
-    | _, [] -> []
-    | [], _ -> []
-//    | x::xs, [] -> []
-//    | [], y::ys -> []
-    | x::xs, y::ys -> let mush = transpose(xs, ys)
-                      x::y::[]@mush
-//    | x::xs, y::ys -> List.map 
+let rec explode thelist = function
+    | [] -> []
+    | x::xs -> x::[]@xs
 
-//transpose (list1, list2)
+let rec transpose (explode xs, explode ys) = function        // Creates a single list
+    | x::xs, [] -> [x]@[]
+    | [], y::ys -> [y]@[]
+    | x::xs, y::ys -> [x::[]; y::[]]@transpose(xs, ys)
+ //                     [[x];[y]]@mush
+ //                     mush
+//    | x::xs, y::ys -> [x::[]@xs; [y]@ys]@[]
+
+transpose (list1, list2)
 
 let rec transpose2 = function       // Creates a list of lists
     | [] -> []
@@ -21,4 +24,4 @@ let rec transpose2 = function       // Creates a list of lists
                let current = List.map List.head xs
                current::partial
 
-transpose2 list3
+//transpose2 list3
