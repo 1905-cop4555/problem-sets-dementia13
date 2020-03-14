@@ -1,0 +1,12 @@
+Determine the asymptotic time complexity:
+
+let rec oddeven = function
+	| [] -> []
+	| x::xs -> if x % 2 = 0
+				then oddeven xs @ [x]
+				else x :: oddeven xs
+
+first, it goes through xs, so you start with the length of xs
+next, you do an evaluation each time, and branch
+each branch calls oddeven again. Each branch processes either the odd or even values, so the end result is that each value gets processed once.
+But that's a second time through xs, so we have n * n or n-squared complexity
